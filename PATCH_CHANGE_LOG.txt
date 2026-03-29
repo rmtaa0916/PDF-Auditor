@@ -1,0 +1,29 @@
+IMMUNE Audit APK Bundle - Change Log
+====================================
+
+Version: 0.1.0
+Date: 2026-03-29
+
+Created a lean Android APK project bundle from the uploaded Form Alchemist project assets.
+
+Main changes
+------------
+1. Replaced the large form-mapping application logic with a focused audit-only Kivy app.
+2. Removed unrelated UI, mapping, CSV, preview, and session-management code.
+3. Avoided PyMuPDF as an Android runtime dependency in the APK path.
+4. Implemented Android-safe PDF page rendering through PdfRenderHelper.java.
+5. Reused UriCopyHelper.java for reliable SAF URI-to-local-file import.
+6. Added simplified audit workflow:
+   - detect likely blank underscore / answer lines
+   - detect likely unanswered radio groups
+   - detect likely unanswered checkbox groups
+   - overlay issue rectangles into the output PDF
+   - append a single consolidated summary page
+7. Added a minimal Buildozer spec with only the dependencies needed for this bundle.
+8. Added a generated app icon.
+9. Added README_BUILD.txt with quick usage notes.
+
+Notes
+-----
+- This build is intended to be safer for Android packaging than the original desktop PyMuPDF script.
+- The audit behavior is approximate and image-analysis based on Android, not a byte-for-byte port of the original fitz workflow.
